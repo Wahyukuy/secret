@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: #050008;
+}
+
+/* =========================
+   ROTATE SCREEN
+========================= */
+
+#rotate-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    background: #050008;
+    color: white;
+    text-align: center;
+}
+
+.rotate-content {
+    padding: 30px;
+}
+
+.phone {
+    font-size: 70px;
+    margin-bottom: 20px;
+
+    animation: rotatePhone 2s infinite ease-in-out;
+}
+
+.rotate-content h2 {
+    font-size: 28px;
+    color: #ff69b4;
+    margin-bottom: 10px;
+}
+
+.rotate-content p {
+    font-size: 16px;
+    color: #ddd;
+}
+
+/* Animasi HP */
+@keyframes rotatePhone {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(90deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+/* =========================
+   LOVE RAIN
+========================= */
+
+#love-container {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.love {
+    position: absolute;
+    top: -50px;
+
+    color: #ff69b4;
+    font-size: 20px;
+
+    user-select: none;
+
+    animation-name: fall;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+
+    filter: drop-shadow(0 0 5px #ff1493);
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* =========================
+   JIKA PORTRAIT
+========================= */
+
+@media (orientation: portrait) {
+    #rotate-screen {
+        display: flex;
+    }
+
+    #love-container {
+        display: none;
+    }
+}
+
+/* Landscape */
+@media (orientation: landscape) {
+    #rotate-screen {
+        display: none;
+    }
+
+    #love-container {
+        display: block;
+    }
+}
